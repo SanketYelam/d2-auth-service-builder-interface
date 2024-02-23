@@ -3,8 +3,7 @@ package org.dnyanyog.dto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LoginResponse { // DTO => Data Transfer Object
-							 // View
+public class LoginResponse {
 
 	private String status;
 	private String message;

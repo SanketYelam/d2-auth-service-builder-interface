@@ -1,14 +1,7 @@
 package org.dnyanyog.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
+import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -18,28 +11,31 @@ import org.springframework.stereotype.Component;
 public class Users { // Table
 	@GeneratedValue // Auto generated (DB => sequence), primary key
 	@Id
-	@Column(name = "user_code", nullable = false, updatable = false, insertable = false)
+	@Column(name = "userCode", nullable = false, updatable = false, insertable = false)
 	private long userCode;
 
-	
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id", nullable = false, updatable = false)
+	@Column(name = "userId", nullable = false, updatable = false)
 	private long userId;
-
-	@Column(name = "user_name", nullable = false, length = 50)
+	@Column(name = "username", nullable = false, length = 50)
 	private String username;
-
 	@Column
 	private String password;
-
 	@Column
 	private String email;
-
 	@Column
 	private String age;
-	
-	public static Users getInstance()
-	{
+
+	public long getUserCode() {
+		return userCode;
+	}
+
+	public Users setUserCode(long userCode) {
+		this.userCode = userCode;
+		return this;
+
+	}
+
+	public static Users getInstance() {
 		return new Users();
 	}
 
@@ -59,6 +55,7 @@ public class Users { // Table
 	public Users setPassword(String password) {
 		this.password = password;
 		return this;
+
 	}
 
 	public String getEmail() {
@@ -68,6 +65,7 @@ public class Users { // Table
 	public Users setEmail(String email) {
 		this.email = email;
 		return this;
+
 	}
 
 	public String getAge() {
@@ -77,6 +75,7 @@ public class Users { // Table
 	public Users setAge(String age) {
 		this.age = age;
 		return this;
+
 	}
 
 	public long getUserId() {
@@ -86,11 +85,12 @@ public class Users { // Table
 	public Users setUserId(long userId) {
 		this.userId = userId;
 		return this;
+
 	}
 
 	@Override
 	public String toString() {
-		return "Users [userId=" + userId + ", username=" + username + ", email=" + email
+		return "Users [userId=" + userId + ", username=" + username + ", password=" + password + ", email=" + email
 				+ ", age=" + age + "]";
 	}
 }
